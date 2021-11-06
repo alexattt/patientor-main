@@ -1,5 +1,11 @@
 import { State } from "./state";
-import { Patient, Diagnosis } from "../types";
+import { 
+  Patient, 
+  Diagnosis, 
+  HealthCheckEntry, 
+  OccupationalHealthCareEntry,
+  HospitalEntry } 
+from "../types";
 
 export type Action =
   | {
@@ -13,6 +19,18 @@ export type Action =
   | {
     type: "SET_DIAGNOSIS_LIST";
     payload: Diagnosis[];
+  }
+  | {
+    type: "ADD_HEALTHCHECK_ENTRY";
+    payload: HealthCheckEntry;
+  }
+  | {
+    type: "ADD_OCC_HEALTHCHECK_ENTRY";
+    payload: OccupationalHealthCareEntry;
+  }
+  | {
+    type: "ADD_HOSPITAL_ENTRY";
+    payload: HospitalEntry;
   };
 
 export const setPatientList = (patientList: Patient[]): Action => {
@@ -60,6 +78,21 @@ export const reducer = (state: State, action: Action): State => {
           ),
           ...state.diagnosis
         }
+      };
+    case "ADD_HEALTHCHECK_ENTRY":
+      window.location.reload();
+      return {
+        ...state
+      };
+    case "ADD_OCC_HEALTHCHECK_ENTRY":
+      window.location.reload();
+      return {
+        ...state
+      };
+    case "ADD_HOSPITAL_ENTRY":
+      window.location.reload();
+      return {
+        ...state
       };
     default:
       return state;
